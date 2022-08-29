@@ -1,4 +1,4 @@
-package com.example.YelpReviews;
+package com.example.YelpReviews.controller;
 
 import com.example.YelpReviews.models.Business;
 import com.example.YelpReviews.models.ReviewResponse;
@@ -40,13 +40,13 @@ public class YelpReviewsController {
     private static final String MY_RESTAURANT = "Pho One24";
     private static final String RESTAURANT_ADDR = "3705 N 124th St Ste 400 Brookfield, WI 53005";
 
-    @RequestMapping(value="/greeting", method= RequestMethod.GET)
+    @GetMapping(path="/greeting", produces = {"application/json"})
     public String greeting(@RequestParam(name="name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
         return "greeting";
     }
 
-    @RequestMapping(value="/reviews", method= RequestMethod.GET)
+    @GetMapping(path="/reviews", produces = {"application/json"})
     public String reviews(@RequestParam(name="name", required = false, defaultValue = MY_RESTAURANT) String name,
                           @RequestParam(name="location", required = false, defaultValue = RESTAURANT_ADDR) String location,
                           Model model){
