@@ -4,6 +4,8 @@ import com.example.YelpReviews.models.YelpReview;
 import com.example.YelpReviews.services.YelpAPIService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,5 +33,13 @@ public class YelpReviewsViewController {
     public String getGreeting(@RequestParam(name="name", required = false, defaultValue = "World") String name, Model model) {
         model.addAttribute("name", name);
         return "greeting";
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public String handleMissingParams(MissingServletRequestParameterException ex) {
+        String name = ex.getParameterName();
+        System.out.println(name + " parameter is missing");
+        // Actual exception handling
+        return "index";
     }
 }
