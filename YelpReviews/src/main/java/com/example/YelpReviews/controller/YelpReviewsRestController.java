@@ -21,8 +21,6 @@ public class YelpReviewsRestController {
     @GetMapping(path="/api/reviews", produces = {"application/json"})
     public List<YelpReview> getReviews(@RequestParam(name="name") String name,
                           @RequestParam(name="location") String location){
-        System.out.println(name);
-        System.out.println(location);
         return apiService.getReviews(name, location);
     }
 
