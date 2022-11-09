@@ -5,8 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-  <h1 th:text="'Here are the reviews for ' +  ${myRestaurant} + ':'"></h1>
-  <div th:each="review : ${myReviews}">
+  <h1 th:text="'Here are the reviews for ' +  ${restaurant} + ':'"></h1>
+  <div th:each="review : ${reviews}">
     <table>
       <tr>
         <td th:text="${review.user.name} + ': ' + ${review.rating} + ' out of 5'"></td>
